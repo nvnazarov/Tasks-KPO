@@ -1,6 +1,5 @@
-
 /**
-    Задание 1: Функция,спрашивающая у пользователя его ФИО и выводящая его на экране.
+    Задание 1: Функция, спрашивающая у пользователя его ФИО и выводящая его на экране.
     (0.5 балла)
     Формат вывода:
         " Фамилия:
@@ -9,14 +8,26 @@
         "
  */
 fun askForInput() {
-
+    print("Введите Ваши ФИО: ")
+    val fullName = readln().trim()
+    val nameParts = fullName.split(" ")
+    if (nameParts.size != 3) {
+        println("Похоже Ваши ФИО не соответствуют шаблону <Фамилия Имя Отчество>.")
+    } else {
+        println("Фамилия: ${nameParts[0]} \nИмя: ${nameParts[1]}\nОтчество: ${nameParts[2]}")
+    }
 }
 
 /**
     Задание 2: Функция, вычисляющая и возвращающая корни квадратного уравнения. (1 балл)
  */
-fun quadraticRoots(a: Double, b: Double, c: Double): Pair<Double, Double> {
-    return 0.0 to 0.0
+fun quadraticRoots(a: Double, b: Double, c: Double): Pair<Double?, Double?> {
+    val d = b * b - 4 * a * c
+    if (d < 0) {
+        return (null to null)
+    }
+    val dSqrt = kotlin.math.sqrt(d)
+    return (-b - dSqrt) / 2 to (-b + dSqrt) / 2
 }
 
 /**
@@ -24,16 +35,15 @@ fun quadraticRoots(a: Double, b: Double, c: Double): Pair<Double, Double> {
     (2 балла)
  */
 fun printSameDigitNumbers() {
-
+    val sameDigitNumbers = Array<Int>(9) { i -> (100 * i+ 10 * i + i + 111) }
+    println(sameDigitNumbers.joinToString(", "))
 }
 
-// Используйте эту функцию для запуска кода
-// Раскомментируйте нужные участки в процессе реализации
 fun main() {
-//    askForInput()
+    askForInput()
 
-//    val roots = quadraticRoots(-5.0, 4.0, 3.0)
-//    println("X1 = ${roots.first} ; X2 =${roots.second}")
+    val roots = quadraticRoots(-5.0, 4.0, 3.0)
+    println("X1 = ${roots.first}; X2 = ${roots.second}")
 
-//    printSameDigitNumbers()
+    printSameDigitNumbers()
 }

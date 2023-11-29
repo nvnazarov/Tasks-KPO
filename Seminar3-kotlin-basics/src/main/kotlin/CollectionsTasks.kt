@@ -3,7 +3,10 @@
  *  (1 балл)
  */
 fun replaceElements(array: List<String>): List<String> {
-    return listOfNotNull()
+    return array.withIndex().map { (i, x) ->
+        if (array.withIndex().count { (index, word) -> index < i && word == x } != 0) "blahblah"
+        else x
+    }
 }
 
 
@@ -13,15 +16,14 @@ fun replaceElements(array: List<String>): List<String> {
  *  (1 балл)
  */
 fun uniqueWords(text: String): Int {
-    return 0
+    return text.split(" ").toSet().size
 }
 
-// Используйте эту функцию для запуска кода
-// Раскомментируйте нужные участки в процессе реализации
 fun main() {
-    //val text = ""
-    //println(uniqueWords(text))
+    val text = "My name name is Nikita Nikita Nazarov a a b"
+    println(uniqueWords(text))
 
     // Вызвать для text и вывести результат замены на экран
-    //replaceElements()
+    val replacedText = replaceElements(text.split(" ").toList())
+    println(replacedText)
 }

@@ -5,7 +5,12 @@
     Вывести массив на экран. (1 балл)
  */
 fun makeArray(): Array<Int> {
-    return arrayOf()
+    val size = readln().toInt()
+    var array = Array<Int>(0) { 0 }
+    for (i in 1..size) {
+        array += readln().toInt()
+    }
+    return array
 }
 
 /**
@@ -13,14 +18,12 @@ fun makeArray(): Array<Int> {
     Использовать встроенные функции. (0.5 балла)
  */
 fun sortArrayDesc(arr: Array<Int>) {
-
+    return arr.sortDescending()
 }
 
-// Используйте эту функцию для запуска кода
-// Раскомментируйте нужные участки в процессе реализации
 fun main() {
-//    val arr = makeArray()
-//
-//    sortArrayDesc(arr)
+    val arr = makeArray()
+    sortArrayDesc(arr)
+    println(arr.joinToString(", "))
 }
 

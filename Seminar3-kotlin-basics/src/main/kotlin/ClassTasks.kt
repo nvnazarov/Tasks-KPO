@@ -6,22 +6,27 @@
  * (3 балла)
  */
 
-class Point(val X: Double, val Y: Double) {
+open class Point(val x: Double, val y: Double) {
+    open val area: Double = 0.0
 
-    val area: Double = 0.0
-
-    fun display() {
-        // Формат вывода – S = ... , X = ... , Y = ...
+    open fun display() {
+        println("S = $area, X = $x, Y = $y")
     }
 }
 
-// Используйте эту функцию для запуска кода
-// Раскомментируйте нужные участки в процессе реализации
+class Circle(x: Double, y: Double, radius: Double) : Point(x, y) {
+    override val area = kotlin.math.PI * radius * radius
+}
+
+class Square(x: Double, y: Double, side: Double) : Point(x, y) {
+    override val area = side * side
+}
+
 fun main() {
-//    val p = Point(34, 56)
-//    val c = Circle(46, 34, 7)
-//    val s = Square(46, 34, 8)
-//    p.display()
-//    c.display()
-//    s.display()
+    val p = Point(34.0, 56.0)
+    val c = Circle(46.0, 34.0, 7.0)
+    val s = Square(46.0, 34.0, 8.0)
+    p.display()
+    c.display()
+    s.display()
 }
