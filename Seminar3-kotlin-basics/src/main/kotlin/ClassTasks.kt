@@ -10,16 +10,24 @@ open class Point(val x: Double, val y: Double) {
     open val area: Double = 0.0
 
     open fun display() {
-        println("S = $area, X = $x, Y = $y")
+        println("[Point]: S = $area, X = $x, Y = $y")
     }
 }
 
-class Circle(x: Double, y: Double, radius: Double) : Point(x, y) {
+class Circle(x: Double, y: Double, private val radius: Double) : Point(x, y) {
     override val area = kotlin.math.PI * radius * radius
+
+    override fun display() {
+        println("[Circle]: S = $area, CenterX = $x, CenterY = $y, Radius = $radius")
+    }
 }
 
-class Square(x: Double, y: Double, side: Double) : Point(x, y) {
+class Square(x: Double, y: Double, private val side: Double) : Point(x, y) {
     override val area = side * side
+
+    override fun display() {
+        println("[Square]: S = $area, CenterX = $x, CenterY = $y, Side = $side")
+    }
 }
 
 fun main() {
